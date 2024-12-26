@@ -12,19 +12,15 @@ wsl(){
 }
 
 wsl2(){
+    cmake_minimum_required(VERSION 3.25)
+    set(CMAKE_CUDA_ARCHITECTURES "native")
     python3 -m venv vllm
     source vllm/bin/activate
     python3 -m pip install --upgrade pip setuptools wheel
     python3 -m ensurepip --upgrade
-
-    apt-key del 7fa2af80
-    wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin
-    mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600
-    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/3bf863cc.pub
-    add-apt-repository 'deb https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/ /'
-    apt-get update
-    apt-get -y install cuda
-
+    wget https://developer.download.nvidia.com/compute/cuda/12.1.1/local_installers/cuda_12.1.1_530.30.02_linux.run
+    ./cuda_12.1.1_530.30.02_linux.run
+    apt install nvidia-cuda-toolkit
     nvcc --version
     python3 -m pip install vllm
 }
