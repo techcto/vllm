@@ -12,8 +12,6 @@ wsl(){
 }
 
 wsl2(){
-    cmake_minimum_required(VERSION 3.25)
-    set(CMAKE_CUDA_ARCHITECTURES "native")
     python3 -m venv vllm
     source vllm/bin/activate
     python3 -m pip install --upgrade pip setuptools wheel
