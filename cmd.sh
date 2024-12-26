@@ -26,7 +26,6 @@ wsl2(){
 
 init(){
     git submodule init
-    git submodule add -f https://github.com/techcto/exllamav2.git ./submodules/exllamav2
 }
 
 update(){
